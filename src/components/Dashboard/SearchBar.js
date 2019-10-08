@@ -1,21 +1,21 @@
-import React, { Fragment, Component } from 'react';
+import React, { Fragment, Component, View } from 'react';
+// import SearchIcon from "@material-ui/icons/Search";
 
-// material-ui
-import { withStyles } from '@material-ui/core/styles';
-import InputBase from '@material-ui/core/InputBase';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
 
 import axios from 'axios';
 
-const { API_KEY } = process.env
-const API_URL = 'http://api.musicgraph.com/api/v2/artist/suggest'
+// const API_URL = 'http://app01.303net.pvt:8080/admin/scores'
+const API_URL = 'http://yahoo.com'
 
 
 class SearchBar extends Component {
-    state = {
-        query: '',
+    
+    constructor(props) {
+        super(props);
+        this.state = { query: '' };
+
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleInputChange = () => {
@@ -24,24 +24,23 @@ class SearchBar extends Component {
         })
     }
 
-    getInfo = () => {
-        axios.get(`${API_URL}?api_key=${API_KEY}&prefix=${this.state.query}&limit=7`)
-            .then(({ data }) => {
-                this.setState({
-                    results: data.data
-                })
-            })
+    handleSubmit(event) {
+        console.log(this.state.value);
     }
 
     render() {
         return (
             <form>
+                
                 <input
                     placeholder="Search for..."
                     ref={input => this.search = input}
                     onChange={this.handleInputChange}
+                    onSubmit={this.handleSubmit}
+                    style={{width: '600px', height: '25px', fontSize: '1em'}}
                 />
-                <p>{this.state.query}</p>
+                <input type="Submit" value="Submit"/>
+                
             </form>
         )
     }
