@@ -1,11 +1,7 @@
 import React, { Fragment, Component, View } from 'react';
 // import SearchIcon from "@material-ui/icons/Search";
-
-
 import axios from 'axios';
 
-// const API_URL = 'http://app01.303net.pvt:8080/admin/scores'
-const API_URL = 'http://yahoo.com'
 
 
 class SearchBar extends Component {
@@ -25,7 +21,14 @@ class SearchBar extends Component {
     }
 
     handleSubmit(event) {
-        console.log(this.state.value);
+        this.props.handleSearchResult(this.state.query);
+        axios.get(`/scores?url=${this.state.query}`)
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 
     render() {
@@ -39,7 +42,7 @@ class SearchBar extends Component {
                     onSubmit={this.handleSubmit}
                     style={{width: '600px', height: '25px', fontSize: '1em'}}
                 />
-                <input type="Submit" value="Submit"/>
+                {/* <input type="Submit" value="Submit"/> */}
                 
             </form>
         )

@@ -1,7 +1,0 @@
-
-
-
-function ScoreIcons(props) {
-
-
-}
