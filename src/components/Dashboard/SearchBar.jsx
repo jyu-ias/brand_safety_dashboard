@@ -36,7 +36,7 @@ class SearchBar extends Component {
 
     render() {
         return (
-            <form style={{padding: '2em'}}>
+            <form style={{padding: '3em'}}>
         
                 <input
                     placeholder="Search for..."
