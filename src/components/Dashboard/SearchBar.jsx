@@ -43,9 +43,8 @@ class SearchBar extends Component {
                     ref={input => this.search = input}
                     onChange={this.handleInputChange}
                     onSubmit={this.handleSubmit}
-                    style={{width: '600px', height: '25px', fontSize: '1em'}}
+                    style={{ width: '600px', height: '25px', fontSize: '1em', onHover: '#fd5749'}}
                 />
-                {/* <input type="Submit" value="Submit"/> */}
                 
             </form>
         )
