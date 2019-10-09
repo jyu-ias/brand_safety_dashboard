@@ -7,15 +7,13 @@ import './App.css';
 export default function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Header />
-      </header>
+
+      <Header className="App-header" />
+    
       <body>
-        <div className="SearchBar">
-          <SearchBar />
-        </div>
-        <ScoreIcons />
-        <ScoreIcons />
+        
+        <SearchBar className="Search-bar"/>
+        
         <ScoreIcons />
       </body>
       

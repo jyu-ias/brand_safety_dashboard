@@ -1,37 +1,54 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 
-const useStyles = makeStyles({
-    card: {
-        minWidth: 275,
+const useStyles = makeStyles(theme => ({
+    root: {
+        flexGrow: 1,
+        height: 250,
     },
-    
-    title: {
-        fontSize: 14,
+    paper: {
+        padding: theme.spacing(1),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
     },
-    pos: {
-        marginBottom: 12,
-    },
-});
+}));
 
-export default function SimpleCard(props) {
+export default function NestedGrid() {
     const classes = useStyles();
 
+    function FormRow() {
+        return (
+            <React.Fragment>
+                <Grid item xs={4}>
+                    <Paper className={classes.paper}>item</Paper>
+                </Grid>
+                <Grid item xs={4}>
+                    <Paper className={classes.paper}>item</Paper>
+                </Grid>
+                <Grid item xs={4}>
+                    <Paper className={classes.paper}>item</Paper>
+                </Grid>
+            </React.Fragment>
+        );
+    }
 
     return (
-        <Card className={classes.card}>
-            <CardContent>
-                This is a card
-            </CardContent>
-            <CardActions>
-                <Button size="small">Learn More</Button>
-            </CardActions>
-       
-        </Card>
+        <div className={classes.root}>
+            <Grid container spacing={1}>
+                <Grid container item xs={12} spacing={3}>
+                    <FormRow />
+                </Grid>
+                <Grid container item xs={12} spacing={3}>
+                    <FormRow />
+                </Grid>
+                <Grid container item xs={12} spacing={3}>
+                    <FormRow />
+                </Grid>
+            </Grid>
+        </div>
     );
 }
+    
+

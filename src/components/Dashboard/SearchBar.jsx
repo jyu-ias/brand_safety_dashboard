@@ -1,6 +1,7 @@
 import React, { Fragment, Component, View } from 'react';
 // import SearchIcon from "@material-ui/icons/Search";
 import axios from 'axios';
+import { conditionalExpression } from '@babel/types';
 
 
 
@@ -15,6 +16,7 @@ class SearchBar extends Component {
     }
 
     handleInputChange = () => {
+        console.log('handle input change')
         this.setState({
             query: this.search.value
         })
@@ -22,19 +24,20 @@ class SearchBar extends Component {
 
     handleSubmit(event) {
         this.props.handleSearchResult(this.state.query);
-        axios.get(`/scores?url=${this.state.query}`)
+        axios.get(`https://${this.state.query}.com`)
             .then(function (response) {
                 console.log(response);
             })
             .catch(function (error) {
                 console.log(error);
             });
+    
     }
 
     render() {
         return (
-            <form>
-                
+            <form style={{padding: '2em'}}>
+        
                 <input
                     placeholder="Search for..."
                     ref={input => this.search = input}
